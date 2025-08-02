@@ -1,0 +1,23 @@
+{
+  "p": "cardinals",
+  "op": "deploy",
+  "protocol": "hello_cardinals",
+  "version": "1.0",
+  "cpl": {
+    "state": {
+      "msg": {
+        "type": "string",
+        "default": "Hello, Cardinals!"
+      }
+    },
+    "methods": {
+      "set_msg": {
+        "params": ["0"],
+        "logic": "state.msg = params.0"
+      },
+      "get_msg": {
+        "returns": "msg"
+      }
+    }
+  }
+} 

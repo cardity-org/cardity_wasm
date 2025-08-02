@@ -20,6 +20,7 @@ set(SOURCES
     runtime/state_store.cpp
     runtime/logic_engine.cpp
     runtime/runtime.cpp
+    runtime/runtime_engine.cpp
     main.cpp
 )
 
@@ -29,6 +30,7 @@ set(HEADERS
     runtime/state_store.h
     runtime/logic_engine.h
     runtime/runtime.h
+    runtime/runtime_engine.hpp
 )
 
 # 创建主可执行文件（原生编译）
@@ -72,6 +74,16 @@ endif()
 # 创建测试可执行文件
 add_executable(cardity_test main.cpp ${SOURCES} ${HEADERS})
 target_link_libraries(cardity_test nlohmann_json::nlohmann_json)
+
+# 创建 RuntimeEngine 测试可执行文件
+add_executable(runtime_engine_test test_runtime_engine.cpp runtime/runtime_engine.cpp)
+target_link_libraries(runtime_engine_test nlohmann_json::nlohmann_json)
+target_include_directories(runtime_engine_test PRIVATE runtime)
+
+# 创建最小测试用例
+add_executable(test_runtime runtime/test_runtime.cpp runtime/runtime_engine.cpp)
+target_link_libraries(test_runtime nlohmann_json::nlohmann_json)
+target_include_directories(test_runtime PRIVATE runtime)
 
 # 安装规则
 install(TARGETS cardity_wasm DESTINATION bin)

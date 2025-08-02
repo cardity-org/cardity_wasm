@@ -94,6 +94,38 @@ std::string msg = runtime.get_state("msg");
 - **WASM 编译**: Emscripten 支持
 - **头文件**: 自动包含 runtime/ 目录
 
+## 测试
+
+### 最小测试用例
+
+```bash
+# 编译
+./build.sh native
+
+# 运行最小测试
+./build/test_runtime
+```
+
+最小测试用例验证：
+- ✅ 协议文件加载
+- ✅ 初始状态设置
+- ✅ 方法调用（set_msg, get_msg）
+- ✅ 状态更新和查询
+- ✅ 协议信息获取
+
+### 完整测试用例
+
+```bash
+# 运行完整测试
+./build/runtime_engine_test
+```
+
+完整测试用例包含：
+- ✅ 复杂协议加载
+- ✅ 多种方法类型
+- ✅ 参数验证
+- ✅ 返回值处理
+
 ## 扩展性
 
 模块设计支持以下扩展：
