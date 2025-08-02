@@ -12,23 +12,23 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -O2")
 find_package(nlohmann_json REQUIRED)
 
 # 包含目录
-include_directories(include)
+include_directories(runtime)
 
 # 源文件
 set(SOURCES
-    src/car_loader.cpp
-    src/state_store.cpp
-    src/logic_engine.cpp
-    src/runtime.cpp
+    runtime/car_loader.cpp
+    runtime/state_store.cpp
+    runtime/logic_engine.cpp
+    runtime/runtime.cpp
     main.cpp
 )
 
 # 头文件
 set(HEADERS
-    include/car_loader.h
-    include/state_store.h
-    include/logic_engine.h
-    include/runtime.h
+    runtime/car_loader.h
+    runtime/state_store.h
+    runtime/logic_engine.h
+    runtime/runtime.h
 )
 
 # 创建主可执行文件（原生编译）

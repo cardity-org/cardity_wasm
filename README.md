@@ -6,22 +6,19 @@ Cardity WASM Runtime 是一个完整的 Cardity 协议运行时环境，以 WebA
 
 ```
 cardity_wasm/
-├── include/                 # 头文件
-│   ├── car_loader.h        # .car 文件加载器
-│   ├── state_store.h       # 状态存储器
-│   ├── logic_engine.h      # 逻辑引擎
-│   └── runtime.h           # 主运行时
-├── src/                    # 源文件
-│   ├── car_loader.cpp      # .car 文件加载器实现
-│   ├── state_store.cpp     # 状态存储器实现
-│   ├── logic_engine.cpp    # 逻辑引擎实现
-│   └── runtime.cpp         # 主运行时实现
-├── test_data/              # 测试数据
-│   └── hello_cardinals.car # 示例协议文件
-├── dist/                   # 输出目录（WASM 文件）
-├── main.cpp                # 主程序入口
-├── CMakeLists.txt          # 构建配置
-└── README.md               # 项目说明
+├── runtime/                    # .car 协议运行时模块
+│   ├── car_loader.h/cpp       # 协议文件加载和解析
+│   ├── state_store.h/cpp      # 状态管理和持久化
+│   ├── logic_engine.h/cpp     # 逻辑表达式解释执行
+│   ├── runtime.h/cpp          # 主运行时接口
+│   └── README.md              # 运行时模块文档
+├── test_data/                 # 测试数据
+│   └── hello_cardinals.car    # 示例协议文件
+├── dist/                      # 输出目录（WASM 文件）
+├── main.cpp                   # CLI 入口程序
+├── CMakeLists.txt             # 构建配置
+├── build.sh                   # 构建脚本
+└── README.md                  # 项目说明
 ```
 
 ## 🚀 快速开始
@@ -61,7 +58,7 @@ emmake make
 ### 加载协议
 
 ```cpp
-#include "runtime.h"
+#include "runtime/runtime.h"
 
 using namespace cardity;
 
