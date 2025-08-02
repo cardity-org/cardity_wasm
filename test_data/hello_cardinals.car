@@ -1,0 +1,78 @@
+{
+  "p": "cardinals",
+  "op": "deploy",
+  "protocol": "hello_cardinals",
+  "version": "1.0",
+  "cpl": {
+    "state": {
+      "msg": {
+        "type": "string",
+        "default": "Hello, Cardinals!"
+      },
+      "count": {
+        "type": "int",
+        "default": "0"
+      },
+      "active": {
+        "type": "bool",
+        "default": "true"
+      }
+    },
+    "events": {
+      "MessageUpdated": {
+        "params": [
+          {
+            "name": "new_msg",
+            "type": "string"
+          }
+        ]
+      },
+      "CounterIncremented": {
+        "params": [
+          {
+            "name": "old_count",
+            "type": "int"
+          },
+          {
+            "name": "new_count",
+            "type": "int"
+          }
+        ]
+      }
+    },
+    "methods": {
+      "set_msg": {
+        "params": ["new_msg"],
+        "logic": [
+          "state.msg = params.new_msg",
+          "emit MessageUpdated(params.new_msg)"
+        ]
+      },
+      "get_msg": {
+        "returns": {
+          "type": "string",
+          "expr": "state.msg"
+        }
+      },
+      "increment": {
+        "logic": "if (state.active) { state.count = state.count + 1; emit CounterIncremented(state.count - 1, state.count); }"
+      },
+      "get_count": {
+        "returns": {
+          "type": "int",
+          "expr": "state.count"
+        }
+      },
+      "toggle": {
+        "logic": "state.active = !state.active"
+      },
+      "get_status": {
+        "returns": {
+          "type": "bool",
+          "expr": "state.active"
+        }
+      }
+    },
+    "owner": "doge1abc123def456"
+  }
+} 
